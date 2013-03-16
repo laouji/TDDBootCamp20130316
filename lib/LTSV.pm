@@ -3,9 +3,6 @@ use strict;
 use warnings;
 use utf8;
 
-use constant TEST => {
-     'foo' => 'hoge'
-};
 
 sub new {
     my ($class) = @_;
@@ -19,7 +16,8 @@ sub get {
     # fix later
 #    my @entries = split('\t',$data);
 
-#    my %content; foreach my $pair (@entries) { #rename later
+#    my %content; foreach my $pair (@entries) { 
+         #rename later
 #        my @array = split(':', $pair);
 #        $content{$array[0]} = $array[1];
 #    }
@@ -38,6 +36,17 @@ sub set {
     return $current;
 }
 
+sub dump {
+    my $self = shift;
 
+    my $data = $self->{data};
+    
+    my $output;
+    for my $key (keys %$data) {
+        $output .= "$key:$data->{$key}\t";
+    }
+    
+    return $output;
+}
 
 1;

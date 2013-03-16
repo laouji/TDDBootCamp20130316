@@ -29,6 +29,10 @@ subtest 'return overwritten value' => sub {
     is($ltsv->set('name','umeyuki'),'laouji');    
 };
 
+subtest 'dumps in tsv format' => sub {
+    is($ltsv->dump(), "name:umeyuki\t");
+};
+
 done_testing;
 
 
