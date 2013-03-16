@@ -6,27 +6,27 @@ use Test::More;
 
 require_ok( 'LTSV' );
 
+my $ltsv = LTSV->new();
 subtest 'can make object' => sub {
-    my $ltsv = LTSV->new();
     isa_ok ($ltsv, 'LTSV');
 };
 
-subtest 'get key value from key' => sub {
-    my $ltsv = LTSV->new();
-    is($ltsv->get('name'),'laouji');
-};
-
 subtest 'set key and value' => sub {
-    my $ltsv = LTSV->new();
-    
     is($ltsv->set('name','laouji'),undef);
 };
 
-subtest 'fails when no key or value' => sub {
-    my $ltsv = LTSV->new();
+subtest 'get key value from key' => sub {
+    is($ltsv->get('name'),'laouji');
+};
 
+
+subtest 'fails when no key or value' => sub {
     isnt($ltsv->set('laouji'),undef);
     isnt($ltsv->set(),undef);
+};
+
+subtest 'return overwritten value' => sub {
+    is($ltsv->set('name','umeyuki'),'laouji');    
 };
 
 done_testing;

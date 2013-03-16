@@ -16,26 +16,28 @@ sub new {
 
 sub get {
     my ($self, $key) = @_;
-    my $data = "name:laouji\tage:26\tsex:male";
-    my @entries = split('\t',$data);
+    # fix later
+#    my @entries = split('\t',$data);
 
-    my %content;
-    foreach my $pair (@entries) {
-        #rename later
-        my @array = split(':', $pair);
-        $content{$array[0]} = $array[1];
-    }
+#    my %content; foreach my $pair (@entries) { #rename later
+#        my @array = split(':', $pair);
+#        $content{$array[0]} = $array[1];
+#    }
     
-    return $content{$key};
+#    return $content{$key};
+     return $self->{data}->{$key};
 }
 
 sub set {
     my ($self,$key,$value) = @_;
-    
+   
     return 'key and value required' unless $key && $value;
-
+    my $current = $self->get($key);
     return "couldn't set data" unless $self->{data}->{$key} = $value;
 
-    return;
+    return $current;
 }
+
+
+
 1;
