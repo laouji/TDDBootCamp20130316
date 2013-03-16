@@ -14,7 +14,7 @@ subtest 'can make object' => sub {
 
 subtest 'get key value from key' => sub {
     my $tsv = LTSV->new();
-    is($tsv->get('foo'),'hoge');
+    is($tsv->get('name'),'laouji');
 };
 
 done_testing;

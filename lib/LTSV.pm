@@ -15,6 +15,17 @@ sub new {
 }
 
 sub get {
-    return 'hoge';
+    my ($self, $key) = @_;
+my $data = "name:laouji\tage:26\tsex:male";
+    my @entries = split('\t',$data);
+
+    my %content;
+    foreach my $pair (@entries) {
+        #rename later
+        my @array = split(':', $pair);
+        $content{$array[0]} = $array[1];
+    }
+    
+    return $content{$key};
 }
 1;
