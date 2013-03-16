@@ -9,7 +9,7 @@ use constant TEST => {
 
 sub new {
     my ($class) = @_;
-    my $self = bless {}, $class;
+    my $self = bless { data => {} }, $class; 
 
     return $self;
 }
@@ -33,6 +33,8 @@ sub set {
     my ($self,$key,$value) = @_;
     
     return 'key and value required' unless $key && $value;
+
+    return "couldn't set data" unless $self->{data}->{$key} = $value;
 
     return;
 }
