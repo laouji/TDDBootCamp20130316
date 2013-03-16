@@ -16,7 +16,7 @@ sub new {
 
 sub get {
     my ($self, $key) = @_;
-my $data = "name:laouji\tage:26\tsex:male";
+    my $data = "name:laouji\tage:26\tsex:male";
     my @entries = split('\t',$data);
 
     my %content;
@@ -27,5 +27,13 @@ my $data = "name:laouji\tage:26\tsex:male";
     }
     
     return $content{$key};
+}
+
+sub set {
+    my ($self,$key,$value) = @_;
+    
+    return 'key and value required' unless $key && $value;
+
+    return;
 }
 1;
